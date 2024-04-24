@@ -107,7 +107,7 @@ const Login = () => {
                 />
                 <img
                   ref={imgRef}
-                  src="/icons/OpenEye.png"
+                  src="../../public/icons/OpenEye.png"
                   alt="Toggle Password Visibility"
                   className="absolute right-3 top-2/3 transform -translate-y-1/2 w-6 h-6 cursor-pointer"
                   onClick={handleTogglePassword}
