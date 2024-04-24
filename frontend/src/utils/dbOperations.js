@@ -5,10 +5,12 @@ import {
   getSessionData,
   genUniqueId,
 } from "./utlis";
+import { BACKEND_URL } from "../configFile";
+// const BACKEND_URL = "https://password-manager-49xe.onrender.com";
 
 export const getUserDataFromID = async (ID) => {
   const secretKey = getSecretKey();
-  let request = await fetch(`http://localhost:3000/onePassword?id=${ID}`, {
+  let request = await fetch(`${BACKEND_URL}/onePassword?id=${ID}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -30,15 +32,12 @@ export const getPasswords = async () => {
     const queryParams = new URLSearchParams({
       ownerEmail: sessionData.ownerEmail,
     });
-    let request = await fetch(
-      `http://localhost:3000/getPasswords?${queryParams}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    let request = await fetch(`${BACKEND_URL}/getPasswords?${queryParams}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (!request.ok) {
       throw new Error(`Failed to fetch passwords: ${request.statusText}`);
     }
@@ -61,7 +60,7 @@ export const savePassword = async (password) => {
     const secretKey = getSecretKey();
     const encryptedPassword = encrypt(password.password, secretKey);
 
-    const response = await fetch("http://localhost:3000/savePassword", {
+    const response = await fetch(`${BACKEND_URL}/savePassword`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -87,7 +86,7 @@ export const savePassword = async (password) => {
 
 export const deletePassword = async (password) => {
   try {
-    let res = await fetch("http://localhost:3000/deletePassword", {
+    let res = await fetch(`${BACKEND_URL}/deletePassword`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -108,7 +107,7 @@ export const updatePassword = async (password) => {
   try {
     const secretKey = getSecretKey();
 
-    let res = await fetch("http://localhost:3000/edit", {
+    let res = await fetch(`${BACKEND_URL}/edit`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -135,7 +134,7 @@ export const signUpUser = async (user) => {
   const secretKey = secretKeyForUser;
   const encryptedPassword = encrypt(user.password, secretKey);
   const encryptedConfirmPassword = encrypt(user.confirmPassword, secretKey);
-  let res = await fetch("http://localhost:3000/saveUser", {
+  let res = await fetch(`${BACKEND_URL}/saveUser`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -162,7 +161,7 @@ export const loginInUser = async (user) => {
     ownerEmail: user.ownerEmail,
     collectionName: "userCredentails",
   });
-  let res = await fetch(`http://localhost:3000/findUser?${queryParams}`, {
+  let res = await fetch(`${BACKEND_URL}/findUser?${queryParams}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -184,7 +183,7 @@ export const isUserExist = async (user) => {
     ownerEmail: user.ownerEmail,
     collectionName: "userCredentails",
   });
-  let res = await fetch(`http://localhost:3000/findUser?${queryParams}`, {
+  let res = await fetch(`${BACKEND_URL}/findUser?${queryParams}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
