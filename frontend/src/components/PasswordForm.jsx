@@ -98,7 +98,7 @@ const PasswordForm = () => {
                   />
                   <img
                     ref={imgRef}
-                    src="../../public/icons/OpenEye.png"
+                    src="../../icons/OpenEye.png"
                     alt="Toggle Password Visibility"
                     className="absolute right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 cursor-pointer"
                     onClick={handleTogglePassword}

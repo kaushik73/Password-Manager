@@ -69,6 +69,6 @@ export const togglePassword = (passwordRef, imgRef) => {
   passwordRef.current.type = currentType === "password" ? "text" : "password";
   imgRef.current.src =
     currentType === "password"
-      ? "../../public/icons/CloseEye.png"
-      : "../../public/icons/OpenEye.png";
+      ? "../../icons/CloseEye.png"
+      : "../../icons/OpenEye.png";
 };
