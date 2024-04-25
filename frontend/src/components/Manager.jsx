@@ -27,9 +27,9 @@ const Manager = () => {
 
   const getMessageToShow = () => {
     if (!isLoggedIn) {
-      setMessage("Login First");
+      setMessage("Please Login First");
     } else if (isLoggedIn && passwords.length === 0) {
-      setMessage("No Password To Show");
+      setMessage("No Passwords To Show");
     } else {
       setMessage(null);
     }
