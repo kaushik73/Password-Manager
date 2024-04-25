@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import { useAuth } from "../context/authContext";
 import { useState, useEffect } from "react";
 import LoadingIcon from "./LoadingIcon";
+import AlertComponent from "./AlertComponent";
 
 const Manager = () => {
   const [passwords, setPasswords] = useState([]); // Lift passwords state up
@@ -48,14 +49,14 @@ const Manager = () => {
   }, [passwords]);
 
   return (
-    <div className=" appBackground flex items-center justify-center content  ">
+    <div className=" appBackground flex items-center justify-center  ">
       <div className="">{isLoading && <LoadingIcon />}</div>
-      {}
-      <div className="content ">
+      <div className="content w-full ">
         {!isLoading && message !== null && (
-          <div className=" text-xl text-center mt-20 text-white py-3">
-            ------{message}------
-          </div>
+          <AlertComponent
+            parentMsg={"Hey User! "}
+            childMsg={"Before Seeing Passwords, Please Login..."}
+          />
         )}
 
         {!isLoading && message == null && passwords.length !== 0 && (

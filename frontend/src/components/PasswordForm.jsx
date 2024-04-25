@@ -6,6 +6,7 @@ import { useAuth } from "../context/authContext";
 import { togglePassword } from "../utils/utlis";
 import { savePassword } from "../utils/dbOperations";
 import PropTypes from "prop-types";
+import AlertComponent from "./AlertComponent";
 
 const PasswordForm = () => {
   const imgRef = useRef(null);
@@ -44,9 +45,10 @@ const PasswordForm = () => {
   return (
     <div className="content">
       {!isLoggedIn && (
-        <div className=" text-xl text-center mt-20 text-white py-3">
-          ------Login First------
-        </div>
+        <AlertComponent
+          parentMsg={"Hey User! "}
+          childMsg={"Before Adding Passwords, Please Login..."}
+        />
       )}
 
       {isLoggedIn && (
