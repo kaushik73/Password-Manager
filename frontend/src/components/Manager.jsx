@@ -50,7 +50,6 @@ const Manager = () => {
 
   return (
     <div className=" appBackground flex items-center justify-center  ">
-      <div className="">{isLoading && <LoadingIcon />}</div>
       <div className="content w-full ">
         {!isLoading && message !== null && (
           <AlertComponent
@@ -58,6 +57,7 @@ const Manager = () => {
             childMsg={"Before Seeing Passwords, Please Login..."}
           />
         )}
+        <div className="">{isLoading && <LoadingIcon />}</div>
 
         {!isLoading && message == null && passwords.length !== 0 && (
           <div className="container py-2 max-w-4xl mx-auto overflow-x-auto ">
