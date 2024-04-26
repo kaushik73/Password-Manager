@@ -111,10 +111,9 @@ const Block = () => {
     <>
       <ToastContainer toastType="success" />
 
+      {isLoading && <LoadingIcon />}
       <div className="relative appBackground flex items-center justify-center content  ">
-        <div className="z-20 absolute top-50% left-50% ">
-          {isLoading && <LoadingIcon />}
-        </div>
+        <div className="z-20 absolute top-50% left-50% "></div>
 
         <div className="max-w-md min-h-60 w-4/5 bg-gray-100 p-3 rounded-lg shadow-lg ">
           <div className="insideContent">
