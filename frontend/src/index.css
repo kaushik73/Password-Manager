@@ -18,6 +18,7 @@
 }
 
 /*  class appBackground is not in use anymore*/
+/* uncomment the background-image code to see static background */
 .appBackground {
   /* background-image: url("../icons/AppBackGround.jpg");  */
   background-position: center;
@@ -26,10 +27,27 @@
 }
 
 .pageNotFoundBackground {
-  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  background-image: url("../public/gifs/pageNotFoundGIF.gif");
   background-position: center;
-  min-width: 100vw;
-  min-height: 90vh;
+  min-width: 10vw;
+  min-height: 100vh;
+}
+
+.homePageGif {
+  background-image: url("../public/gifs/cartoon-573_256.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  min-width: 10vw;
+  background-size: cover;
+  min-height: 25vh;
+}
+
+@media (max-width: 767px) {
+  .homePageGif {
+    min-height: 25vh;
+    min-width: 40vw;
+    height: 30vh; /* Adjust as needed for smaller screens */
+  }
 }
 
 .inputTag {
@@ -64,6 +82,10 @@
   color: #718096; /* placeholder-slate-700 */
   padding-left: 0.3125rem;
 }
+.inputTagForIconPosition {
+  padding-left: 0.3125rem;
+  padding-right: 2.5rem;
+}
 
 /* Animations */
 @keyframes bounce {
@@ -86,11 +108,12 @@
   animation: bounce 1.5s ease-in-out 1;
 }
 
-/* particle */
+/* Not applied yet */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
 
-.particle-container {
-  width: 100%; /* or any specific width */
-  height: 100vh; /* or any specific height */
-  position: absolute; /* or relative, depending on your layout */
-  z-index: 111; /* to ensure particles are behind other content */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #38a169;
+  border-radius: 6px;
 }

@@ -12,7 +12,6 @@ const ParticleComponent = () => {
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
-      //await loadBasic(engine);
     }).then(() => {
       setIsLoading(false);
       setInit(true);
@@ -20,7 +19,6 @@ const ParticleComponent = () => {
   }, []);
 
   const particlesLoaded = (container) => {
-    console.log(container);
   };
 
   const options = useMemo(
@@ -70,7 +68,7 @@ const ParticleComponent = () => {
             default: "bounce",
           },
           random: false,
-          speed: 5,
+          speed: 3,
           straight: false,
         },
         number: {

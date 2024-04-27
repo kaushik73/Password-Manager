@@ -32,7 +32,7 @@ const Navbar = () => {
         </div>
       </NavLink>
       <div className="options pt-2 md:pt-0">
-        <ul className="flex gap-3">
+        <ul className="flex md:gap-9 gap-3">
           {showAddPassword && (
             <li>
               <NavLink
@@ -63,7 +63,7 @@ const Navbar = () => {
           )}
           {!isLoggedIn && (
             <li>
-              <NavLink to="/signUp" className="hover:text-green-700 min-w-14">
+              <NavLink to="/signUp" className="hover:text-green-700 min-w-14 m-0 md:mr-4">
                 Sign Up
               </NavLink>
             </li>

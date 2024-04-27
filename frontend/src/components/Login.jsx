@@ -53,6 +53,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleLoginClick();
   };
 
   return (
@@ -97,17 +98,18 @@ const Login = () => {
                 <label className="block mb-1">Password</label>
                 <input
                   name="password"
+                  minLength="5"
                   ref={passwordRef}
                   value={loginForm.password}
                   onChange={handleChange}
                   required
-                  placeholder="Enter Password"
+                  placeholder="Enter Minimum 5 Character "
                   className="inputTag loginInputTag"
                   type="password"
                 />
                 <img
                   ref={imgRef}
-                  src="../../icons/OpenEye.png"
+                  src="../../icons/CloseEye-NonBG.png"
                   alt="Toggle Password Visibility"
                   className="absolute right-3 top-2/3 transform -translate-y-1/2 w-6 h-6 cursor-pointer"
                   onClick={handleTogglePassword}
@@ -117,7 +119,6 @@ const Login = () => {
               <div className="loginSubmitButton flex justify-center items-center ">
                 {!isLoading && (
                   <button
-                    onClick={handleLoginClick}
                     type="submit"
                     className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
                   >
@@ -147,7 +148,7 @@ const Login = () => {
                         fill="#1C64F2"
                       />
                     </svg>
-                    Loading...
+                    &nbsp;Loading...
                   </button>
                 )}
               </div>

@@ -68,7 +68,7 @@ const PasswordForm = () => {
                   required
                   className="inputTag PasswordInputTag"
                   type="text"
-                  placeholder="Website URL"
+                  placeholder="Site URL"
                   id="site"
                 />
               </div>
@@ -86,26 +86,58 @@ const PasswordForm = () => {
                     id="id"
                   />
                 </div>
-                <div className="relative flex-grow">
-                  <input
-                    name="password"
-                    ref={passwordRef}
-                    value={form.password}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="Password"
-                    className="inputTag PasswordInputTag"
-                    type="password"
-                    id="password"
-                  />
-                  <img
-                    ref={imgRef}
-                    src="../../icons/OpenEye.png"
-                    alt="Toggle Password Visibility"
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 cursor-pointer"
-                    onClick={handleTogglePassword}
-                  />
+                <div className="relative passwordContainer flex-grow">
+                  <div className="inputContainer w-11/12">
+                    <input
+                      name="password"
+                      ref={passwordRef}
+                      value={form.password}
+                      onChange={handleInputChange}
+                      required
+                      minLength="3"
+                      placeholder="Minimum 3 Character"
+                      className="inputTag w-10/12 PasswordInputTag"
+                      type="password"
+                      id="password"
+                    />
+                  </div>
+                  <div className="imageContainer absolute right-0 bottom-0">
+                    <img
+                      ref={imgRef}
+                      src="../../icons/CloseEye-NonBG.png"
+                      alt="Toggle Password Visibility"
+                      className="transform -translate-y-1/2 w-6 h-6 cursor-pointer"
+                      onClick={handleTogglePassword}
+                    />
+                  </div>
                 </div>
+
+                {/* start */}
+                {/* <div className="relative password-container text-gray-600 mb-4  flex  items-center">
+                  <div className="passwordInputContainer w-10/12 ">
+                    <input
+                      name="password"
+                      className={`text-black w-11/12 inputTag blockInputTag`}
+                      ref={passwordRef}
+                      type="password"
+                      onChange={handleInputChange}
+                      minLength="3"
+                      required
+                      placeholder="Enter Minimum 3 character"
+                    />
+                  </div>
+                  <div className="absolute right-2 top-1/2 passwordImageContainer">
+                    <img
+                      ref={imgRef}
+                      src="../../icons/CloseEye-NonBG.png"
+                      alt="Toggle Password Visibility"
+                      className="w-full transform -translate-y-1/2 h-6 cursor-pointer"
+                      onClick={handleTogglePassword}
+                    />
+                  </div>
+                </div> */}
+
+                {/* end */}
               </div>
             </div>
             <div className="submitBtn flex justify-center">

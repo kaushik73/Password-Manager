@@ -17,6 +17,14 @@ const Table = ({ serialNumber, password }) => {
     return "*".repeat(String(text).length);
   };
 
+  const navigateToURL = (URL) => {
+    const prefixedURL =
+      URL.startsWith("http://") || URL.startsWith("https://")
+        ? URL
+        : `http://${URL}`;
+    window.open(prefixedURL);
+  };
+
   return (
     <>
       <tbody className="bg-green-100">
@@ -24,24 +32,25 @@ const Table = ({ serialNumber, password }) => {
           <td className="max-w-10 text-center py-2 border border-white font-bold">
             {serialNumber}
           </td>
-          <td className="max-w-40 min-w-32 text-center mx-auto px-2 py-2 border border-white truncate ">
+          <td className="max-w-40 min-w-32 text-center mx-auto px-2 py-2 border border-white truncate">
             <div className="flex items-center justify-center ">
-              <div className=" truncate">
+              <div className="overflow-hidden">
                 {" "}
                 {/* I removed overflow-x-auto and added truncate */}
-                <a
-                  href={password.site}
-                  target="_blank"
+                <p
+                  // href={password.site}
+                  // target="_blank"
+                  onClick={() => navigateToURL(password.site)}
                   className="text-blue-800"
                 >
                   {password.site}
-                </a>
+                </p>
               </div>
               <div className="min-w-5 relative right-0">
                 <img
                   src="icons/copyIcon.png"
                   onClick={() => copyText(password.site, "URL")}
-                  className="w-5 h-5 mb-2 cursor-pointer hover:bg-slate-300 mx-1"
+                  className="w-5 h-5 mb-2 cursor-pointer  mx-1"
                   alt="copy"
                 />
               </div>
@@ -51,7 +60,7 @@ const Table = ({ serialNumber, password }) => {
           <td className="min-w-32 max-w-40 text-center mx-auto px-4 py-2 border border-white truncate">
             <div className="flex items-center justify-center">
               <span
-                className="bg-transparent text-center truncate"
+                className="bg-transparent text-center overflow-hidden"
                 // className="bg-transparent text-center overflow-x-auto"
                 style={{ maxWidth: "calc(100% - 1.25rem)" }}
               >
@@ -60,35 +69,32 @@ const Table = ({ serialNumber, password }) => {
               <div>
                 <img
                   src="icons/copyIcon.png"
-                  onClick={() => copyText(password.userName, "Name")}
-                  className="w-5 h-5 mb-2 cursor-pointer hover:bg-slate-300 mx-1"
+                  onClick={() => copyText(password.userName, "User ID")}
+                  className="w-5 h-5 mb-2 cursor-pointer  mx-1"
                   alt="copy"
                 />
               </div>
             </div>
           </td>
 
-          <td className="min-w-32 max-w-40 text-center mx-auto px-4 py-2 border border-white truncate">
+          <td className="min-w-32 max-w-40 text-center mx-auto px-4 py-2 border border-white overflow-hidden">
             <div className="flex items-center justify-center">
               <span
                 type="password"
-                className="bg-transparent text-center overflow-x-auto font-bold"
+                className="bg-transparent text-center overflow-hidden font-bold"
                 style={{ maxWidth: "calc(100% - 1.25rem)" }}
               >
-                {/* {password.password} */}
                 {getPasswordMask(password.password)}
               </span>
-              {/* <div> */}
               <img
                 src="icons/copyIcon.png"
                 onClick={() => copyText(password.password, "Password")}
-                className="w-5 h-5 mb-2 cursor-pointer hover:bg-slate-300 mx-1"
+                className="w-5 h-5 mb-2 cursor-pointer  mx-1"
                 alt="copy"
               />
-              {/* </div> */}
             </div>
           </td>
-          <td className="min-w-32 text-center mx-auto px-2 py-2 border border-white ">
+          <td className="min-w-20 text-center mx-auto px-2 py-2 border border-white ">
             <div className="buttons flex justify-around items-center">
               <button
                 onClick={() => handleViewClick(password)}

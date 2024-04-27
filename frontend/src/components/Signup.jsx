@@ -35,9 +35,9 @@ const SignUp = () => {
 
   const securityAnswerPlaceholders = useMemo(
     () => [
-      "Enter your pet's name",
-      "Enter your city",
-      "Enter your favorite color",
+      "Enter your pet's name (minimum 3 character)",
+      "Enter your city (minimum 3 character)",
+      "Enter your favorite color (minimum 3 character)",
     ],
     []
   );
@@ -123,14 +123,16 @@ const SignUp = () => {
                   value={signUpForm.name}
                   onChange={handleChange}
                   required
+                  minLength="3"
+                  pattern="[a-zA-Z]+"
                   className="inputTag signUpInputTag"
-                  placeholder="Enter Name"
+                  placeholder="Enter Minimum 3 Character"
                 />
               </div>
               <div className="mb-4">
                 <label className="block mb-1">Email ID</label>
                 <input
-                  type="ownerEmail"
+                  type="email"
                   name="ownerEmail"
                   value={signUpForm.ownerEmail}
                   onChange={handleChange}
@@ -148,13 +150,14 @@ const SignUp = () => {
                   value={signUpForm.password}
                   onChange={handleChange}
                   required
-                  placeholder="Enter Password"
+                  placeholder="Enter Minimum 5 Character"
                   className="inputTag signUpInputTag"
                   type="password"
+                  minLength="5"
                 />
                 <img
                   ref={passwordImgRef}
-                  src="../../icons/OpenEye.png"
+                  src="../../icons/CloseEye-NonBG.png"
                   alt="Toggle Password Visibility"
                   className="absolute right-3 top-2/3 transform -translate-y-1/2 w-6 h-6 cursor-pointer"
                   onClick={() =>
@@ -173,13 +176,14 @@ const SignUp = () => {
                   value={signUpForm.confirmPassword}
                   onChange={handleChange}
                   required
-                  placeholder="Enter Confirm Password"
+                  placeholder="Enter Minimum 5 Character"
                   className="inputTag signUpInputTag"
                   type="password"
+                  minLength="5"
                 />
                 <img
                   ref={confirmPasswordImgRef}
-                  src="../../icons/OpenEye.png"
+                  src="../../icons/CloseEye-NonBG.png"
                   alt="Toggle Password Visibility"
                   className="absolute right-3 top-2/3 transform -translate-y-1/2 w-6 h-6 cursor-pointer"
                   onClick={() =>
@@ -196,6 +200,7 @@ const SignUp = () => {
                 <select
                   value={signUpForm.securityQuestion}
                   name="securityQuestion"
+                  required
                   onChange={(e) => {
                     handleChange(e);
                     handleSecurityQuestionChange(e);
@@ -215,8 +220,11 @@ const SignUp = () => {
                   <input
                     type="securityAnswer"
                     name="securityAnswer"
+                    required
                     placeholder={securityAnswerPlaceholder}
                     value={signUpForm.securityAnswer}
+                    minLength="3"
+                    pattern="[a-zA-Z]+"
                     onChange={(e) => {
                       handleChange(e);
                     }}
@@ -258,7 +266,7 @@ const SignUp = () => {
                         fill="#1C64F2"
                       />
                     </svg>
-                    ...
+                    &nbsp;Loading...
                   </button>
                 )}
               </div>

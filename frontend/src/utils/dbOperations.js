@@ -6,7 +6,6 @@ import {
   genUniqueId,
 } from "./utlis";
 import { BACKEND_URL } from "../configFile";
-// const BACKEND_URL = "https://password-manager-49xe.onrender.com";
 
 export const getUserDataFromID = async (ID) => {
   const secretKey = getSecretKey();
@@ -76,8 +75,6 @@ export const savePassword = async (password) => {
     if (!response.ok) {
       throw new Error(`Failed to save password: ${response.statusText}`);
     }
-
-    console.log("Password saved successfully");
   } catch (error) {
     console.error("Error saving password:", error.message);
     throw error; // Rethrow the error to propagate it to the caller
@@ -93,11 +90,11 @@ export const deletePassword = async (password) => {
       },
       body: JSON.stringify({ id: password.id }),
     });
-    if (res.ok) {
-      console.log("Successfully deleted password");
-    } else {
-      console.error("Failed to delete password");
-    }
+    // if (res.ok) {
+    //   console.log("Successfully deleted password");
+    // } else {
+    //   console.error("Failed to delete password");
+    // }
   } catch (error) {
     console.error("Error deleting password:", error);
   }
@@ -117,12 +114,12 @@ export const updatePassword = async (password) => {
         password: encrypt(password.password, secretKey),
       }),
     });
-    if (res.ok) {
-      console.log("Password updated successfully");
-      return res.ok;
-    } else {
-      throw new Error(`Failed to update password: ${res.statusText}`);
-    }
+    // if (res.ok) {
+    //   console.log("Password updated successfully");
+    //   return res.ok;
+    // } else {
+    //   throw new Error(`Failed to update password: ${res.statusText}`);
+    // }
   } catch (error) {
     console.error("Error updating password:", error.message);
     throw error;
@@ -141,24 +138,25 @@ export const signUpUser = async (user) => {
     },
     body: JSON.stringify({
       ...user,
+      ownerEmail: user.ownerEmail.trim(),
       password: encryptedPassword,
       confirmPassword: encryptedConfirmPassword,
       id: genUniqueId(),
     }),
   });
 
-  if (res.ok) {
-    console.log("User SignUp successfully");
-  } else {
-    throw new Error(`Failed to Signup User: ${res.statusText}`);
-  }
+  // if (res.ok) {
+  //   console.log("User SignUp successfully");
+  // } else {
+  //   throw new Error(`Failed to Signup User: ${res.statusText}`);
+  // }
 };
 
 export const loginInUser = async (user) => {
   const secretKeyForUser = "fjsio^&fwe!@";
   const secretKey = secretKeyForUser;
   const queryParams = new URLSearchParams({
-    ownerEmail: user.ownerEmail,
+    ownerEmail: user.ownerEmail.trim(),
     collectionName: "userCredentails",
   });
   let res = await fetch(`${BACKEND_URL}/findUser?${queryParams}`, {

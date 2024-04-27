@@ -1,12 +1,12 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useNavigate, Outlet } from "react-router-dom";
-import { useState } from "react";
 import { useAuth } from "./context/authContext";
 
 import { useEffect } from "react";
 const Layout = () => {
-  const [sessionTimeout, setSessionTimeout] = useState(null);
+  // const [sessionTimeout, setSessionTimeout] = useState(null);
+  let sessionTimeout = null;
   const navigate = useNavigate();
   const { logout } = useAuth();
 
@@ -17,9 +17,9 @@ const Layout = () => {
 
   const resetSessionTimeOut = () => {
     if (sessionTimeout) {
-      setSessionTimeout(clearTimeout(sessionTimeout));
+      clearTimeout(sessionTimeout);
     }
-    setTimeout(logOutUser, 360000); // 6 minutes
+    setTimeout(logOutUser, 999420000); // 7z minutes
   };
 
   useEffect(() => {
@@ -29,8 +29,12 @@ const Layout = () => {
     return () => {
       window.removeEventListener("mousemove", resetSessionTimeOut);
       window.removeEventListener("keydown", resetSessionTimeOut);
+      // Clear the timeout when the component unmounts
+      if (sessionTimeout) {
+        clearTimeout(sessionTimeout);
+      }
     };
-  }, []);
+  });
 
   return (
     <>

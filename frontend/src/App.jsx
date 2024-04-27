@@ -1,5 +1,4 @@
-import ParticleComponent from "./components/Paticals";
-// import Routing from "./components/Routing";
+import ParticleComponent from "./components/Particals";
 import "./index.css";
 
 function App() {

@@ -49,8 +49,14 @@ const Manager = () => {
   }, [passwords]);
 
   return (
-    <div className=" appBackground flex items-center justify-center  ">
-      <div className="content w-full ">
+    <div
+      className=" appBackground flex items-center justify-center           
+    "
+    >
+      <div
+        className="content  w-11/12 md:w-full           
+"
+      >
         {!isLoading && message !== null && (
           <AlertComponent
             parentMsg={"Hey User! "}
@@ -60,15 +66,21 @@ const Manager = () => {
         <div className="">{isLoading && <LoadingIcon />}</div>
 
         {!isLoading && message == null && passwords.length !== 0 && (
-          <div className="container py-2 max-w-4xl mx-auto overflow-x-auto ">
+          <div
+            className="container py-2 max-w-4xl            
+          mx-auto overflow-x-scroll md:overflow-auto custom-scrollbar
+          "
+          >
             <ToastContainer toastType="success" newestOnTop={false} />
-
-            <table className="table-auto w-full  mt-10 sm:mt-0 rounded-xl">
+            <table
+              className="table-auto w-full mt-10 sm:mt-0 rounded-xl           
+"
+            >
               <thead className="bg-green-800 text-white">
                 <tr>
                   <th className="px-2 py-2">S No.</th>
-                  <th className="px-2 py-2">Site</th>
-                  <th className="px-2 py-2">User Name</th>
+                  <th className="px-2 py-2">Site URL</th>
+                  <th className="px-2 py-2">User ID</th>
                   <th className="px-2 py-2">Password</th>
                   <th className="px-2 py-2">Actions</th>
                 </tr>
